@@ -17,7 +17,7 @@ export default function VideosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="glass-card mb-8">
               <p className="text-gray-300 text-center">
-                Video content coming soon. We'll be sharing property walkthroughs, investment tutorials, market analysis, and interviews with industry experts.
+                Video content coming soon. We&apos;ll be sharing property walkthroughs, investment tutorials, market analysis, and interviews with industry experts.
               </p>
             </div>
 

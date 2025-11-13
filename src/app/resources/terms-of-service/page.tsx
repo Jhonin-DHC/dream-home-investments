@@ -16,7 +16,7 @@ export default function TermsOfServicePage() {
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-white">1. Agreement to Terms</h2>
                 <p className="text-gray-300 leading-relaxed">
-                  By accessing and using Dream Home Investments' services, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not access our services.
+                  By accessing and using Dream Home Investments&apos; services, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you may not access our services.
                 </p>
               </div>
 

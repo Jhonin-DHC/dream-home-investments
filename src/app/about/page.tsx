@@ -27,7 +27,7 @@ export default function AboutPage() {
                 <strong className="text-white">Building a successful real estate investment portfolio is a significant achievement.</strong> At <strong className="text-white">Dream Home Investments</strong>, we are your <strong className="text-white">real estate investment experts</strong>, committed to helping you navigate the investment market with confidence and ease. We understand how important this financial decision is, and our experienced team is here to guide you every step of the way.
               </p>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                Founded in 2025, <strong className="text-white">Dream Home Investments</strong> began as a family-owned business with a passion for connecting investors with profitable property opportunities. Today, we've grown into one of the leading <strong className="text-white">real estate investment experts</strong>, built on a foundation of trust, integrity, and unmatched market expertise. Our commitment to personalized service has earned us a reputation for excellence, making us a trusted name in real estate investment.
+                Founded in 2025, <strong className="text-white">Dream Home Investments</strong> began as a family-owned business with a passion for connecting investors with profitable property opportunities. Today, we&apos;ve grown into one of the leading <strong className="text-white">real estate investment experts</strong>, built on a foundation of trust, integrity, and unmatched market expertise. Our commitment to personalized service has earned us a reputation for excellence, making us a trusted name in real estate investment.
               </p>
             </div>
           </div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
               Why Choose Us: Real Estate Investment Experts
             </h2>
             <p className="text-lg text-gray-300">
-              Our mission is to provide exceptional real estate investment services that exceed our clients' expectations. We strive to create lasting relationships by delivering personalized guidance and achieving optimal results.
+              Our mission is to provide exceptional real estate investment services that exceed our clients&apos; expectations. We strive to create lasting relationships by delivering personalized guidance and achieving optimal results.
             </p>
           </div>
 
