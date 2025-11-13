@@ -13,7 +13,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/dhi-hero.webp"
+            src="/images/dhi-hero-sc.webp"
             alt="Dream Home Investments Hero"
             fill
             className="object-cover"
