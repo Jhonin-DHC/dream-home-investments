@@ -1,20 +1,27 @@
+"use client";
+
 import Image from "next/image";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <Header />
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero/hero-bg.jpg"
+            src="/images/dhi-hero.webp"
             alt="Dream Home Investments Hero"
             fill
             className="object-cover"
             priority
+            quality={100}
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
 
         {/* Hero Content */}
@@ -108,7 +115,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-4">Before</h3>
                 <div className="relative aspect-video rounded-lg overflow-hidden">
                   <Image
-                    src="/images/before-after/before-1.jpg"
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop"
                     alt="Property Before"
                     fill
                     className="object-cover"
@@ -119,7 +126,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-4">After</h3>
                 <div className="relative aspect-video rounded-lg overflow-hidden">
                   <Image
-                    src="/images/before-after/after-1.jpg"
+                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
                     alt="Property After"
                     fill
                     className="object-cover"
@@ -132,26 +139,44 @@ export default function Home() {
           {/* Portfolio Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              "Residential Investment",
-              "Commercial Properties",
-              "Fix & Flip Projects",
-              "Rental Properties",
-              "Multi-Family Units",
-              "Land Development",
-            ].map((service, index) => (
+              {
+                name: "Residential Investment",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
+              },
+              {
+                name: "Commercial Properties",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+              },
+              {
+                name: "Fix & Flip Projects",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+              },
+              {
+                name: "Rental Properties",
+                image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop",
+              },
+              {
+                name: "Multi-Family Units",
+                image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop",
+              },
+              {
+                name: "Land Development",
+                image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop",
+              },
+            ].map((item, index) => (
               <div
                 key={index}
                 className="glass-card group cursor-pointer overflow-hidden"
               >
                 <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src={`/images/portfolio/portfolio-${index + 1}.jpg`}
-                    alt={service}
+                    src={item.image}
+                    alt={item.name}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-xl font-bold">{service}</h3>
+                <h3 className="text-xl font-bold">{item.name}</h3>
               </div>
             ))}
           </div>
@@ -184,9 +209,9 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-300 mb-4 italic">
-                "Dream Home Investments transformed my approach to real estate.
+                &ldquo;Dream Home Investments transformed my approach to real estate.
                 Their expertise helped me build a profitable portfolio in just
-                two years. Highly recommended!"
+                two years. Highly recommended!&rdquo;
               </p>
               <p className="font-bold">Sarah Johnson</p>
               <p className="text-sm text-gray-400">Property Investor</p>
@@ -206,9 +231,9 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-300 mb-4 italic">
-                "The team at Dream Home Investments made the entire investment
+                &ldquo;The team at Dream Home Investments made the entire investment
                 process seamless. Their attention to detail and market knowledge
-                is unmatched."
+                is unmatched.&rdquo;
               </p>
               <p className="font-bold">Michael Chen</p>
               <p className="text-sm text-gray-400">Real Estate Developer</p>
@@ -305,6 +330,194 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Resources Section */}
+      <section id="resources" className="section bg-gradient-to-b from-black to-gray-900">
+        <div className="container">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            Investment <span className="gradient-text">Resources</span>
+          </h2>
+          <p className="text-center text-gray-400 mb-12">
+            Tools and insights to help you make informed investment decisions
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Resource 1 */}
+            <div className="glass-card">
+              <div className="text-4xl mb-4">📚</div>
+              <h3 className="text-xl font-bold mb-3">Investment Guides</h3>
+              <p className="text-gray-300 mb-4">
+                Comprehensive guides covering everything from getting started in
+                real estate investing to advanced portfolio strategies.
+              </p>
+              <a
+                href="#"
+                className="text-green-400 hover:text-green-300 font-medium inline-flex items-center gap-2"
+              >
+                Learn More
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            {/* Resource 2 */}
+            <div className="glass-card">
+              <div className="text-4xl mb-4">📊</div>
+              <h3 className="text-xl font-bold mb-3">Market Analysis</h3>
+              <p className="text-gray-300 mb-4">
+                Stay informed with our latest market trends, property valuations,
+                and investment opportunity reports.
+              </p>
+              <a
+                href="#"
+                className="text-green-400 hover:text-green-300 font-medium inline-flex items-center gap-2"
+              >
+                View Reports
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            {/* Resource 3 */}
+            <div className="glass-card">
+              <div className="text-4xl mb-4">💼</div>
+              <h3 className="text-xl font-bold mb-3">Investment Calculator</h3>
+              <p className="text-gray-300 mb-4">
+                Use our ROI calculator to analyze potential returns and make
+                data-driven investment decisions.
+              </p>
+              <a
+                href="#"
+                className="text-green-400 hover:text-green-300 font-medium inline-flex items-center gap-2"
+              >
+                Calculate ROI
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            {/* Resource 4 */}
+            <div className="glass-card">
+              <div className="text-4xl mb-4">🎓</div>
+              <h3 className="text-xl font-bold mb-3">Educational Webinars</h3>
+              <p className="text-gray-300 mb-4">
+                Join our monthly webinars featuring industry experts and learn
+                about the latest investment strategies.
+              </p>
+              <a
+                href="#"
+                className="text-green-400 hover:text-green-300 font-medium inline-flex items-center gap-2"
+              >
+                Register Now
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            {/* Resource 5 */}
+            <div className="glass-card">
+              <div className="text-4xl mb-4">📝</div>
+              <h3 className="text-xl font-bold mb-3">Legal Resources</h3>
+              <p className="text-gray-300 mb-4">
+                Access templates, checklists, and legal guides to navigate
+                property transactions with confidence.
+              </p>
+              <a
+                href="#"
+                className="text-green-400 hover:text-green-300 font-medium inline-flex items-center gap-2"
+              >
+                Browse Resources
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            {/* Resource 6 */}
+            <div className="glass-card">
+              <div className="text-4xl mb-4">🤝</div>
+              <h3 className="text-xl font-bold mb-3">Investor Network</h3>
+              <p className="text-gray-300 mb-4">
+                Connect with other investors, share experiences, and access
+                exclusive investment opportunities.
+              </p>
+              <a
+                href="#"
+                className="text-green-400 hover:text-green-300 font-medium inline-flex items-center gap-2"
+              >
+                Join Network
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form Section */}
       <section id="contact" className="section bg-gradient-to-b from-gray-900 to-black">
         <div className="container">
@@ -376,14 +589,14 @@ export default function Home() {
                   <select
                     id="service"
                     name="service"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-white"
                   >
-                    <option value="">Select a service</option>
-                    <option value="acquisition">Property Acquisition</option>
-                    <option value="fix-flip">Fix & Flip</option>
-                    <option value="management">Portfolio Management</option>
-                    <option value="rental">Rental Management</option>
-                    <option value="consulting">Investment Consulting</option>
+                    <option value="" className="bg-gray-900">Select a service</option>
+                    <option value="acquisition" className="bg-gray-900">Property Acquisition</option>
+                    <option value="fix-flip" className="bg-gray-900">Fix & Flip</option>
+                    <option value="management" className="bg-gray-900">Portfolio Management</option>
+                    <option value="rental" className="bg-gray-900">Rental Management</option>
+                    <option value="consulting" className="bg-gray-900">Investment Consulting</option>
                   </select>
                 </div>
 
@@ -417,15 +630,14 @@ export default function Home() {
 
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="text-2xl">📞</div>
+                    <div className="text-2xl">📍</div>
                     <div>
-                      <p className="font-semibold">Phone</p>
-                      <a
-                        href="tel:+15551234567"
-                        className="text-blue-400 hover:text-blue-300"
-                      >
-                        (555) 123-4567
-                      </a>
+                      <p className="font-semibold">Address</p>
+                      <p className="text-gray-300">
+                        508 North 2nd Street
+                        <br />
+                        Honey Grove, Texas 75446
+                      </p>
                     </div>
                   </div>
 
@@ -434,25 +646,24 @@ export default function Home() {
                     <div>
                       <p className="font-semibold">Email</p>
                       <a
-                        href="mailto:info@dreamhomeinvestments.com"
+                        href="mailto:concierge@dreamhomecollections.com"
                         className="text-blue-400 hover:text-blue-300"
                       >
-                        info@dreamhomeinvestments.com
+                        concierge@dreamhomecollections.com
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="text-2xl">📍</div>
+                    <div className="text-2xl">📞</div>
                     <div>
-                      <p className="font-semibold">Address</p>
-                      <p className="text-gray-300">
-                        123 Investment Avenue
-                        <br />
-                        Suite 100
-                        <br />
-                        Your City, ST 12345
-                      </p>
+                      <p className="font-semibold">Phone</p>
+                      <a
+                        href="tel:+14698378891"
+                        className="text-blue-400 hover:text-blue-300"
+                      >
+                        +1 469-837-8891
+                      </a>
                     </div>
                   </div>
                 </div>
