@@ -57,7 +57,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold gradient-text"
+            className="text-xl md:text-2xl font-bold text-white header-logo"
           >
             Dream Home Investments
           </Link>
@@ -115,7 +115,7 @@ export default function Header() {
             </div>
             <Link
               href="/#contact"
-              className="btn-hero-primary text-sm py-2 px-4"
+              className="btn-header-contact text-sm py-2 px-4"
             >
               Contact Us
             </Link>
@@ -211,7 +211,7 @@ export default function Header() {
               </div>
               <Link
                 href="/#contact"
-                className="btn-hero-primary text-sm py-2 px-4 text-center"
+                className="btn-header-contact text-sm py-2 px-4 text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact Us

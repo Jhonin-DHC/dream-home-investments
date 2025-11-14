@@ -193,6 +193,56 @@ header a {
   text-decoration: none;
 }
 
+/* Header Logo - Metallic gold matching logo aesthetic */
+.header-logo {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 25%, #d4af37 50%, #b8941f 75%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+  font-weight: 700;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.header-logo:hover {
+  background: linear-gradient(135deg, #f4d03f 0%, #ffd700 25%, #f4d03f 50%, #d4af37 75%, #f4d03f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 12px rgba(244, 208, 63, 0.5), 0 0 25px rgba(244, 208, 63, 0.3);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* Header Contact Button - Metallic gold with luxury feel */
+.btn-header-contact {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  color: #1a1a1a;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(212, 175, 55, 0.8);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4), 
+              0 0 20px rgba(212, 175, 55, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-header-contact:hover {
+  background: linear-gradient(135deg, #f4d03f 0%, #ffd700 50%, #f4d03f 100%);
+  border-color: rgba(244, 208, 63, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 208, 63, 0.5), 
+              0 0 30px rgba(244, 208, 63, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
 /* Form Select Styles */
 select {
   color: white;
