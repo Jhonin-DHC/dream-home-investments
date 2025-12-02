@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header";
 
 export default function Home() {
@@ -163,22 +164,34 @@ export default function Home() {
                 name: "Land Development",
                 image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop",
               },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="glass-card group cursor-pointer overflow-hidden"
-              >
-                <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <h3 className="text-xl font-bold">{item.name}</h3>
-              </div>
-            ))}
+            ].map((item, index) => {
+              const routeMap: { [key: string]: string } = {
+                "Residential Investment": "/portfolio/residential-investment",
+                "Commercial Properties": "/portfolio/commercial-properties",
+                "Fix & Flip Projects": "/portfolio/fix-flip-projects",
+                "Rental Properties": "/portfolio/rental-properties",
+                "Multi-Family Units": "/portfolio/multi-family-units",
+                "Land Development": "/portfolio/land-development",
+              };
+
+              return (
+                <Link
+                  key={index}
+                  href={routeMap[item.name] || "#"}
+                  className="glass-card group cursor-pointer overflow-hidden block"
+                >
+                  <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold">{item.name}</h3>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
