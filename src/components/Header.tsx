@@ -35,6 +35,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Portfolio", href: "/#portfolio" },
+    { name: "Listings", href: "/listings" },
   ];
 
   const resourcesLinks = [
