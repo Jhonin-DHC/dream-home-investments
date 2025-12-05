@@ -275,4 +275,3 @@ export default function PropertyModal({ property, isOpen, onClose }: PropertyMod
     </div>
   );
 }
-
