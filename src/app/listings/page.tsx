@@ -262,24 +262,33 @@ export default function ListingsPage() {
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {paginatedProperties.map((property) => (
-                    <div
+                    <article
                       key={property.id}
-                      onClick={() => openModal(property)}
-                      className="glass-card overflow-hidden cursor-pointer group hover:border-amber-500/50 transition-all duration-300"
+                      className="glass-card overflow-hidden group hover:border-amber-500/50 transition-all duration-300"
+                      itemScope
+                      itemType="https://schema.org/RealEstateListing"
                     >
-                      <div className="relative h-48 overflow-hidden">
+                      <Link 
+                        href={`/listings/${property.slug}`}
+                        className="block relative h-48 overflow-hidden"
+                        title={property.seoTitle}
+                      >
                         <Image
                           src={property.image}
-                          alt={property.address}
+                          alt={property.imageAlt}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                          itemProp="image"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         
                         {/* Price Badge */}
                         <div className="absolute bottom-3 left-3">
-                          <span className="px-2 py-1 rounded-md bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-bold text-sm">
+                          <span 
+                            className="px-2 py-1 rounded-md bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-bold text-sm"
+                            itemProp="price"
+                          >
                             {formatPrice(property.price)}/mo
                           </span>
                         </div>
@@ -292,25 +301,49 @@ export default function ListingsPage() {
                             </span>
                           </div>
                         )}
-                      </div>
+                      </Link>
 
                       <div className="p-4">
-                        <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-amber-400 transition-colors line-clamp-1">
-                          {property.address}
-                        </h3>
-                        <p className="text-amber-400/80 text-xs mb-3 line-clamp-1">
+                        <Link href={`/listings/${property.slug}`}>
+                          <h3 
+                            className="text-sm font-semibold text-white mb-1 group-hover:text-amber-400 transition-colors line-clamp-1"
+                            itemProp="name"
+                          >
+                            {property.address}
+                          </h3>
+                        </Link>
+                        <p className="text-amber-400/80 text-xs mb-3 line-clamp-1" itemProp="address">
                           {property.subdivision}
                         </p>
 
-                        <div className="flex items-center gap-3 text-xs text-gray-400">
+                        <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
                           <span>{property.beds} bd</span>
                           <span className="text-gray-600">|</span>
                           <span>{property.baths} ba</span>
                           <span className="text-gray-600">|</span>
                           <span>{property.sqft.toLocaleString()} sqft</span>
                         </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => openModal(property)}
+                            className="flex-1 px-3 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 text-xs font-medium transition-colors"
+                          >
+                            Quick View
+                          </button>
+                          <Link
+                            href={`/listings/${property.slug}`}
+                            className="flex-1 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors text-center"
+                          >
+                            Details
+                          </Link>
+                        </div>
                       </div>
-                    </div>
+
+                      {/* Hidden SEO meta */}
+                      <meta itemProp="description" content={property.seoDescription} />
+                    </article>
                   ))}
                 </div>
 
