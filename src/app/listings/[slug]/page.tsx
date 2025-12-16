@@ -14,6 +14,7 @@ export default function PropertyPage() {
   const [property, setProperty] = useState<RentalProperty | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [similarProperties, setSimilarProperties] = useState<RentalProperty[]>([]);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
     if (params.slug) {
@@ -22,6 +23,7 @@ export default function PropertyPage() {
       
       if (foundProperty) {
         setProperty(foundProperty);
+        setActiveImageIndex(0); // Reset to first image when property changes
         
         // Find similar properties (same price range, beds, or subdivision)
         const similar = rentalProperties
@@ -126,36 +128,95 @@ export default function PropertyPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Column */}
             <div className="lg:col-span-2">
-              {/* Hero Image */}
-              <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-8">
-                <Image
-                  src={property.image}
-                  alt={property.imageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Price Badge */}
-                <div className="absolute bottom-6 left-6">
-                  <span className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-bold text-2xl shadow-lg">
-                    {formatPrice(property.price)}/mo
-                  </span>
+              {/* Image Gallery */}
+              <div className="mb-8">
+                {/* Main Image */}
+                <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-4">
+                  <Image
+                    src={property.images[activeImageIndex]}
+                    alt={`${property.imageAlt} - Photo ${activeImageIndex + 1}`}
+                    fill
+                    className="object-cover transition-opacity duration-300"
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
+                  {/* Price Badge */}
+                  <div className="absolute bottom-6 left-6">
+                    <span className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 font-bold text-2xl shadow-lg">
+                      {formatPrice(property.price)}/mo
+                    </span>
+                  </div>
+
+                  {/* Badges */}
+                  <div className="absolute top-6 left-6 flex gap-2">
+                    {property.furnished && (
+                      <span className="px-4 py-2 rounded-full bg-emerald-500/90 text-white text-sm font-semibold">
+                        Furnished
+                      </span>
+                    )}
+                    <span className="px-4 py-2 rounded-full bg-blue-500/90 text-white text-sm font-semibold">
+                      MLS# {property.mlsNumber}
+                    </span>
+                  </div>
+
+                  {/* Image Counter */}
+                  <div className="absolute bottom-6 right-6">
+                    <span className="px-4 py-2 rounded-lg bg-black/50 text-white text-sm font-medium backdrop-blur-sm">
+                      {activeImageIndex + 1} / {property.images.length}
+                    </span>
+                  </div>
+
+                  {/* Navigation Arrows */}
+                  {property.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setActiveImageIndex((prev) => (prev === 0 ? property.images.length - 1 : prev - 1))}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors backdrop-blur-sm"
+                        aria-label="Previous image"
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => setActiveImageIndex((prev) => (prev === property.images.length - 1 ? 0 : prev + 1))}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors backdrop-blur-sm"
+                        aria-label="Next image"
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </>
+                  )}
                 </div>
 
-                {/* Badges */}
-                <div className="absolute top-6 left-6 flex gap-2">
-                  {property.furnished && (
-                    <span className="px-4 py-2 rounded-full bg-emerald-500/90 text-white text-sm font-semibold">
-                      Furnished
-                    </span>
-                  )}
-                  <span className="px-4 py-2 rounded-full bg-blue-500/90 text-white text-sm font-semibold">
-                    MLS# {property.mlsNumber}
-                  </span>
-                </div>
+                {/* Thumbnail Gallery */}
+                {property.images.length > 1 && (
+                  <div className="grid grid-cols-3 gap-3">
+                    {property.images.map((img, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setActiveImageIndex(index)}
+                        className={`relative h-24 md:h-32 rounded-xl overflow-hidden transition-all duration-300 ${
+                          activeImageIndex === index
+                            ? 'ring-2 ring-amber-500 ring-offset-2 ring-offset-slate-900'
+                            : 'opacity-70 hover:opacity-100'
+                        }`}
+                      >
+                        <Image
+                          src={img}
+                          alt={`${property.address} - Photo ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 33vw, 200px"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Property Details */}
